@@ -38,6 +38,7 @@ import org.apache.hadoop.yarn.server.resourcemanager.nodelabels.RMDelegatedNodeL
 import org.apache.hadoop.yarn.server.resourcemanager.placement.PlacementManager;
 import org.apache.hadoop.yarn.server.resourcemanager.recovery.RMStateStore;
 import org.apache.hadoop.yarn.server.resourcemanager.reservation.ReservationSystem;
+import org.apache.hadoop.yarn.server.resourcemanager.resource.ResourceProfilesManager;
 import org.apache.hadoop.yarn.server.resourcemanager.rmapp.RMApp;
 import org.apache.hadoop.yarn.server.resourcemanager.rmapp.attempt.AMLivelinessMonitor;
 import org.apache.hadoop.yarn.server.resourcemanager.rmcontainer.ContainerAllocationExpirer;
@@ -79,11 +80,14 @@ public class RMContextImpl implements RMContext {
 
   private QueueLimitCalculator queueLimitCalculator;
 
+  private ResourceProfilesManager resourceProfilesManager;
+
   /**
    * Default constructor. To be used in conjunction with setter methods for
    * individual fields.
    */
   public RMContextImpl() {
+
   }
 
   @VisibleForTesting
@@ -498,5 +502,15 @@ public class RMContextImpl implements RMContext {
   public void setContainerQueueLimitCalculator(
       QueueLimitCalculator limitCalculator) {
     this.queueLimitCalculator = limitCalculator;
+  }
+
+  @Override
+  public ResourceProfilesManager getResourceProfilesManager() {
+    return this.resourceProfilesManager;
+  }
+
+  @Override
+  public void setResourceProfilesManager(ResourceProfilesManager mgr) {
+    this.resourceProfilesManager = mgr;
   }
 }

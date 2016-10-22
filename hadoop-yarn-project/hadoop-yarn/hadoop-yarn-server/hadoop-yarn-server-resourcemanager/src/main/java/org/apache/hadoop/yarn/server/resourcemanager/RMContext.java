@@ -34,6 +34,7 @@ import org.apache.hadoop.yarn.server.resourcemanager.nodelabels.RMDelegatedNodeL
 import org.apache.hadoop.yarn.server.resourcemanager.placement.PlacementManager;
 import org.apache.hadoop.yarn.server.resourcemanager.recovery.RMStateStore;
 import org.apache.hadoop.yarn.server.resourcemanager.reservation.ReservationSystem;
+import org.apache.hadoop.yarn.server.resourcemanager.resource.ResourceProfilesManager;
 import org.apache.hadoop.yarn.server.resourcemanager.rmapp.RMApp;
 import org.apache.hadoop.yarn.server.resourcemanager.rmapp.attempt.AMLivelinessMonitor;
 import org.apache.hadoop.yarn.server.resourcemanager.rmcontainer.ContainerAllocationExpirer;
@@ -149,4 +150,8 @@ public interface RMContext {
   LeaderElectorService getLeaderElectorService();
 
   QueueLimitCalculator getNodeManagerQueueLimitCalculator();
+
+  ResourceProfilesManager getResourceProfilesManager();
+
+  void setResourceProfilesManager(ResourceProfilesManager mgr);
 }
